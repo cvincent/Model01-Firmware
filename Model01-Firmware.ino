@@ -211,6 +211,22 @@ const macro_t *macroAction(uint8_t macroIndex, uint8_t keyState) {
 // The order can be important. For example, LED effects are
 // added in the order they're listed here.
 KALEIDOSCOPE_INIT_PLUGINS(
+  // The EEPROMSettings & EEPROMKeymap plugins make it possible to have an
+  // editable keymap in EEPROM.
+  EEPROMSettings,
+  EEPROMKeymap,
+
+  // Focus allows bi-directional communication with the host, and is the
+  // interface through which the keymap in EEPROM can be edited.
+  Focus,
+
+  // FocusSettingsCommand adds a few Focus commands, intended to aid in changing some settings of the keyboard, such as the default layer (via the `settings.defaultLayer` command)
+  FocusSettingsCommand,
+
+  // FocusEEPROMCommand adds a set of Focus commands, which are very helpful in
+  // both debugging, and in backing up one's EEPROM contents.
+  FocusEEPROMCommand,
+
   // The boot greeting effect pulses the LED button for 10 seconds after the keyboard is first connected
   /* Unicode, */
   /* OneShot, */
